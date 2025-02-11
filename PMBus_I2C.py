@@ -64,8 +64,21 @@ def Open_Aardvark(number = 0):
     else:
         print('Using dongle with ID: ' + str(dongle_id) + "\n")
 
-        
+def Aardvark_Version():
+    aardvark_version = aardvark_py.AardvarkVersion()
+    (_ret_, aardvark_version) = aardvark_py.aa_version(Aardvark_Handle)
+    print("Aardvark Software Version Number " + str(aardvark_version.software >> 8) + '.' + str(aardvark_version.software & 0xFF))
+    print("Aardvark Firmware Version Number " + str(aardvark_version.firmware >> 8) + '.' + str(aardvark_version.firmware & 0xFF))
+    print("Aardvark Hardware Version Number " + str(aardvark_version.hardware >> 8) + '.' + str(aardvark_version.hardware & 0xFF))
+    print("Firmware requires that software must be >= " + str(aardvark_version.sw_req_by_fw >> 8) + '.' + str(aardvark_version.sw_req_by_fw & 0xFF))
+    print("Software requires that firmware must be >= " + str(aardvark_version.fw_req_by_sw >> 8) + '.' + str(aardvark_version.fw_req_by_sw & 0xFF))
+    print("Software requires that API interface must be >= " + str(aardvark_version.api_req_by_sw >>8) + '.' + str(aardvark_version.api_req_by_sw & 0xFF))
 
 # function to close the connection with the Aardvark dongle
 def Close_Aardvark():
     aardvark_py.aa_close(Aardvark_Handle)
+
+if __name__ == '__main__':
+    Open_Aardvark()
+    Aardvark_Version()
+    Close_Aardvark()

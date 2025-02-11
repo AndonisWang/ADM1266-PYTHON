@@ -276,6 +276,7 @@ def device_present():
     for x in range(len(ADM1266_Address)):
         for x in range(len(ADM1266_Address)):
             ic_id = PMBus_I2C.PMBus_Write_Read(ADM1266_Address[x], [0xAD], 4)
+            print(ic_id)
             if len(ic_id) == 4:
                 if (ic_id[1] == 66 or ic_id[1] == 65) and ic_id[2] == 18 and ic_id[3] == 102:
                     all_present = True

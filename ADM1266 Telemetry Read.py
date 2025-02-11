@@ -62,11 +62,13 @@ if __name__ == '__main__':
     PMBus_I2C.Open_Aardvark()
 
     # PMBus address of all ADM1266 in this design. e.g: [0x40, 0x42]
-    ADM1266_Lib.ADM1266_Address = [0x40, 0x42]
+    ADM1266_Lib.ADM1266_Address = [0x41]
     
     # Check if all the devices listed in ADM1266_Lib.ADM1266_Address above is present. 
     # If all the devices are not present the function will throw an exception and will not procced with the remaining code.
     ADM1266_Lib.device_present()
+
+    PMBus_I2C.Aardvark_Version()
 
     # Lists to convert status to a readable format
     Rail_Status = ["Normal", "Disabled", "Under Voltage Warning", "Over Voltage Warning", "Under Voltage Fault", "Over Voltage Fault"]

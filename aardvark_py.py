@@ -63,7 +63,9 @@ except ImportError:
     import imp, platform
     ext = platform.system() in ('Windows', 'Microsoft') and '.dll' or '.so'
     try:
-        api = imp.load_dynamic('aardvark', 'aardvark' + ext)
+        print(os.getcwd)
+        # api = imp.load_dynamic('aardvark', 'aardvark' + ext)
+        api = imp.load_dynamic('aardvark', 'C:\\Users\\svc_hmcott_labuser\\Desktop\\Song\\ADM1266-PYTHON\\aardvark.dll')
     except ImportError:
         _, ex2, _ = sys.exc_info()
         import_err_msg  = 'Error importing aardvark%s\n' % ext
